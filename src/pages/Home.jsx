@@ -40,8 +40,8 @@ const Home = ({ user, setActive }) => {
 					</div>
 
 					{!user && <>
-						<span className="info-link" onClick={() => setActive(true)}>Авторизуйтесь</span>,
-						чтобы получить полный доступ к сайту</>}
+						<span className="info-link" onClick={() => setActive(true)}>Авторизуйтесь,
+						чтобы получить полный доступ к сайту</span></>}
 				</div>
 					
 
@@ -74,8 +74,8 @@ const Home = ({ user, setActive }) => {
 					</div>
 
 					{!user && <>
-						<span className="info-link" onClick={() => setActive(true)}>Авторизуйтесь</span>,
-						чтобы получить полный доступ к сайту</>}
+						<span className="info-link" onClick={() => setActive(true)}>Авторизуйтесь,
+						чтобы получить полный доступ к сайту</span></>}
 				</div>
 
 

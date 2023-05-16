@@ -17,7 +17,7 @@ const Product = () => {
 			})
 	}, [])
 	return <>
-		<Link to={`/catalog#pro_${id}`}>Назад</Link>
+		<Link to={`/catalog#pro_${id}`}>В каталог</Link>
 		{data.name 
 			? <>
 				<h1>{data.name}</h1>

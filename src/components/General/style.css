@@ -6,6 +6,9 @@ header {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    min-height: 100px;
+    max-height: 200px;
+    border-bottom: 1px solid green;
 }
 header .search-block {
     order: 1;
@@ -20,6 +23,12 @@ footer {
     justify-content: space-between;
     background-color: aquamarine;
     color: black;
+    min-height: 100px;
+    max-height: 200px;
+    border-top: 1px solid green;
+}
+footer h5{
+margin-top: 40px;
 }
 
 .logo {
