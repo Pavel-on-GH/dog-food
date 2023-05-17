@@ -5,32 +5,24 @@ import {
     Cart4, 
     PersonCircle, 
     BuildingUp, 
-    // BuildingDown
 } from "react-bootstrap-icons";
 
 import Search from "../Search";
 const Header = ({
-        user, 
-        upd, 
+        user,
         searchArr,
-        setGoods, 
-        setSearchResult,
+        setGoods,
         setModalOpen
     }) => {
     const login = () => {
         setModalOpen(true)
     }
-    // const logout = () => {
-    //     localStorage.removeItem("user12");
-    //     upd(null);
-    // }
     return <header>
         <Logo/>
         <div className="search-block">
             <Search 
                 data={searchArr} 
-                setGoods={setGoods} 
-                setSearchResult={setSearchResult}
+                setGoods={setGoods}
             />
         </div>
         <nav className="header__menu">
@@ -47,7 +39,6 @@ const Header = ({
             </>}
             <span>
                 {!user && <BuildingUp  title="Войти" onClick={login}/>}
-                {/*{user && <BuildingDown title="Выйти" onClick={logout}/>}*/}
             </span>
         </nav>
     </header>

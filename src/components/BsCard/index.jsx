@@ -1,7 +1,8 @@
-import {useState} from "react";
+import {useState, useContext} from "react";
 import {Link} from "react-router-dom";
 import {SuitHeart, SuitHeartFill} from "react-bootstrap-icons";
 import {Card, Button} from "react-bootstrap";
+import Ctx from "../../ctx";
 
 const BsCard = ({
     discount,
@@ -11,9 +12,9 @@ const BsCard = ({
     price,
     tags,
     _id, 
-    user,
-    setBaseData
+    user
 }) => {
+    const {setBaseData} = useContext(Ctx);
     const [isLike, setIsLike] = useState(likes.includes(user));
 
     const likeHandler = () => {

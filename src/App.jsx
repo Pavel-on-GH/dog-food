@@ -1,8 +1,9 @@
-import {useState, useEffect} from "react";
-import {Routes, Route} from "react-router-dom";
+import { useState, useEffect, createContext } from "react";
+import { Routes, Route } from "react-router-dom";
 
+import Ctx from "./ctx"
 import Modal from "./components/Modal";
-import {Header, Footer} from "./components/General";
+import { Header, Footer } from "./components/General";
 
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
@@ -54,46 +55,48 @@ const App = () => {
         setGoods(baseData)
     }, [baseData])
     return (
-        <>
-            <Header 
-                user={user} 
-                upd={setUser} 
+        <Ctx.Provider value={{
+            searchResult,
+            setSearchResult,
+            setBaseData,
+            baseData
+        }}>
+            <Header
+                user={user}
+                upd={setUser}
                 searchArr={baseData}
-                setGoods={setGoods} 
-                setSearchResult={setSearchResult}
+                setGoods={setGoods}
                 setModalOpen={setModalOpen}
             />
             <main>
                 <Routes>
-                    <Route path="/" element={<Home user={user} setActive={setModalOpen}/>}/>
+                    <Route path="/" element={<Home user={user} setActive={setModalOpen} />} />
                     <Route path="/catalog" element={
-                        <Catalog 
+                        <Catalog
                             goods={goods}
-                            setBaseData={setBaseData}
                             userId={userId}
                         />
-                    }/>
+                    } />
                     <Route path="/old" element={
-                        <OldPage 
-                            searchText={searchResult}
+                        <OldPage
                             goods={goods}
                         />
-                    }/>
+                    } />
                     <Route path="/profile" element={
-                        <Profile user={user} setUser={setUser}/>}
+                        <Profile user={user} setUser={setUser} />}
                     />
 
-                    <Route path="/product/:id" element={<Product />}/>
-                    <Route path="/add/product" element={<AddProduct/>}/>
+                    <Route path="/product/:id" element={<Product />} />
+                    <Route path="/add/product" element={<AddProduct />} />
                 </Routes>
             </main>
-            <Footer/>
-            <Modal 
-                isActive={modalOpen} 
+            <Footer />
+            <Modal
+                isActive={modalOpen}
                 setIsActive={setModalOpen}
                 setUser={setUser}
             />
-        </>
+        </Ctx.Provider>
     )
 }
 
