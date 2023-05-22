@@ -3,21 +3,19 @@ import {useNavigate} from "react-router-dom";
 import Ctx from "../../ctx";
 import "./style.css";
 
-const Search = ({data, setGoods}) => {
-	const { setSearchResult } = useContext(Ctx);
+const Search = () => {
+	// так подключается контекст
+	const { setSearchResult, baseData, setGoods } = useContext(Ctx);
+
 	const navigate = useNavigate();
 	const [text, setText] = useState("");
 	const [num, setNum] = useState(0);
+	// в переменной text находится пустая строка
 	const changeValue = (e) => {
 		navigate("/catalog");
 		let val = e.target.value.toLowerCase();
 		setText(val);
 	}
-	const changeText = () => {
-		console.log("Click")
-		setText("Привет!");
-	}
-	console.log(text);
 	useEffect(() => {
 		let str = '';
 		if (num && text) {
@@ -30,21 +28,13 @@ const Search = ({data, setGoods}) => {
 		setSearchResult(str);
 	}, [num, text]);
 	useEffect(() => {
-		let result = data.filter(el => el.name.toLowerCase().includes(text));
+		let result = baseData.filter(el => el.name.toLowerCase().includes(text));
 		setGoods(result);
 		setNum(result.length);
-		console.log(result);
-	}, [text]);
+	}, [text, baseData]);
 	return <>
 		<input className="search" type="search" value={text} onChange={changeValue}/>
 	</>
 }
 
 export default Search;
-
-
-
-
-
-
-

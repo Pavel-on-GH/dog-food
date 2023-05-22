@@ -1,22 +1,21 @@
-import { useState, useEffect, createContext } from "react";
-import { Routes, Route } from "react-router-dom";
-
+// import {useState, useEffect, createContext} from "react";
+import {useState, useEffect} from "react";
+import {Routes, Route} from "react-router-dom";
 import Ctx from "./ctx"
 import Modal from "./components/Modal";
-import { Header, Footer } from "./components/General";
-
+import {Header, Footer} from "./components/General";
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import OldPage from "./pages/Old";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import AddProduct from "./pages/AddProduct";
+import Favorites from "./pages/Favorites";
 
 const App = () => {
     const [user, setUser] = useState(localStorage.getItem("user12"));
     const [userId, setUserId] = useState(localStorage.getItem("user12-id"));
     const [token, setToken] = useState(localStorage.getItem("token12"));
-
     const [baseData, setBaseData] = useState([]);
     const [goods, setGoods] = useState(baseData);
 
@@ -52,47 +51,52 @@ const App = () => {
     }, [token])
 
     useEffect(() => {
-        setGoods(baseData)
     }, [baseData])
     return (
         <Ctx.Provider value={{
             searchResult,
             setSearchResult,
             setBaseData,
-            baseData
+            baseData,
+            goods,
+            setGoods,
+            userId,
+            token
         }}>
-            <Header
-                user={user}
-                upd={setUser}
-                searchArr={baseData}
-                setGoods={setGoods}
-                setModalOpen={setModalOpen}
-            />
+                <Header
+                    user={user}
+                    upd={setUser}
+                    searchArr={baseData}
+                    setGoods={setGoods}
+                    setModalOpen={setModalOpen}
+                />
             <main>
                 <Routes>
-                    <Route path="/" element={<Home user={user} setActive={setModalOpen} />} />
+                    <Route path="/" element={<Home user={user} setActive={setModalOpen}/>}/>
                     <Route path="/catalog" element={
-                        <Catalog
+                        <Catalog 
                             goods={goods}
                             userId={userId}
                         />
-                    } />
+                    }/>
                     <Route path="/old" element={
                         <OldPage
                             goods={goods}
                         />
-                    } />
+                    }/>
                     <Route path="/profile" element={
-                        <Profile user={user} setUser={setUser} />}
+                        <Profile user={user} setUser={setUser}/>}
                     />
-
-                    <Route path="/product/:id" element={<Product />} />
-                    <Route path="/add/product" element={<AddProduct />} />
+                    <Route path="/favorites" element={
+                        <Favorites />}
+                    />
+                    <Route path="/product/:id" element={<Product />}/>
+                    <Route path="/add/product" element={<AddProduct/>}/>
                 </Routes>
             </main>
-            <Footer />
-            <Modal
-                isActive={modalOpen}
+            <Footer/>
+            <Modal 
+                isActive={modalOpen} 
                 setIsActive={setModalOpen}
                 setUser={setUser}
             />

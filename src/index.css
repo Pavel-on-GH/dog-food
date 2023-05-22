@@ -77,6 +77,8 @@ p {
   padding: 10px;
   margin: 4%;
   border-radius: 30px;
+  border: 1px solid black;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
 
 .promotion {
@@ -88,26 +90,9 @@ p {
 }
 
 .promotion img {
-  width: 80%;
-  max-height: 50%;
-  display: block;
+  max-width:100%;
+  height: auto;
   margin: auto;
   border-radius: 20px;
-  border: 1px solid black;
-}
-.promotion-second {
-  max-height: 10%;
-  display: flex;
-  margin: 10px;
-  padding: auto;
-  width: auto;
-}
-.promotion-second img {
-  width: 80%;
-  max-height: 50%;
-  display: block;
-  margin: 10px;
-  ;
-  border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid silver;
 }
