@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {XOctagon} from "react-bootstrap-icons";
 import "./style.css"
+import {firstUser, firstUserId, firstUserToken} from "../../App"
 
 const Modal = ({
 	isActive, 
@@ -53,12 +54,12 @@ const Modal = ({
 			}
 		} else {
 			if (data && data.token) {
-				localStorage.setItem("token12", data.token);
+				localStorage.setItem(firstUserToken, data.token);
 			}
 			if (data?.data) {
-				localStorage.setItem("user12", data.data.name);
+				localStorage.setItem(firstUser, data.data.name);
 				setUser(data.data.name);
-				localStorage.setItem("user12-id", data.data._id);
+				localStorage.setItem(firstUserId, data.data._id);
 				clearForm();
 				setIsActive(false);
 			}

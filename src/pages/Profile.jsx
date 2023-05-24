@@ -1,7 +1,8 @@
 import {useContext, useEffect, useState} from "react";
 import {useNavigate, Link} from "react-router-dom";
-import {Button} from "react-bootstrap"
-import Ctx from "../ctx"
+import {Button} from "react-bootstrap";
+import Ctx from "../ctx";
+import {firstUser} from "../App";
 
 const Profile = ({setUser}) => {
 	const navigate = useNavigate()
@@ -9,7 +10,7 @@ const Profile = ({setUser}) => {
 	const [userData, setUserData] = useState({})
 	const logOut = () => {
 		setUser("");
-		localStorage.removeItem("user12");
+		localStorage.removeItem(firstUser);
 		navigate("/");
 	}
 	useEffect(() => {

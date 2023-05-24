@@ -13,10 +13,14 @@ import Product from "./pages/Product";
 import AddProduct from "./pages/AddProduct";
 import Favorites from "./pages/Favorites";
 
+const firstUser = "user12"; 
+const firstUserId = "user12-id"; 
+const firstUserToken = "token12"; 
+
 const App = () => {
-    const [user, setUser] = useState(localStorage.getItem("user12"));
-    const [userId, setUserId] = useState(localStorage.getItem("user12-id"));
-    const [token, setToken] = useState(localStorage.getItem("token12"));
+    const [user, setUser] = useState(localStorage.getItem(firstUser));
+    const [userId, setUserId] = useState(localStorage.getItem(firstUserId));
+    const [token, setToken] = useState(localStorage.getItem(firstUserToken));
     const [api, setApi] = useState(new Api(token));
     const [baseData, setBaseData] = useState([]);
     const [goods, setGoods] = useState(baseData);
@@ -25,11 +29,11 @@ const App = () => {
     const [modalOpen, setModalOpen] = useState(false);
     useEffect(() => {
         if (user) {
-            setUserId(localStorage.getItem("user12-id"));
-            setToken(localStorage.getItem("token12"));
+            setUserId(localStorage.getItem(firstUserId));
+            setToken(localStorage.getItem(firstUserToken));
         } else {
-            localStorage.removeItem("user12-id")
-            localStorage.removeItem("token12")
+            localStorage.removeItem(firstUserId)
+            localStorage.removeItem(firstUserToken)
             setUserId(null);
             setToken(null);
         }
@@ -108,3 +112,4 @@ const App = () => {
 }
 
 export default App;
+export {firstUser, firstUserId, firstUserToken};
