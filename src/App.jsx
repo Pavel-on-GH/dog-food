@@ -1,9 +1,10 @@
-// import {useState, useEffect, createContext} from "react";
 import {useState, useEffect} from "react";
+// import {useState, useEffect, createContext} from "react";
 import {Routes, Route} from "react-router-dom";
 import Ctx from "./ctx"
+import Api from "./Api"
 import Modal from "./components/Modal";
-import {Header, Footer} from "./components/General";
+import {Header, Footer} from "./components/General"; 
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import OldPage from "./pages/Old";
@@ -16,12 +17,12 @@ const App = () => {
     const [user, setUser] = useState(localStorage.getItem("user12"));
     const [userId, setUserId] = useState(localStorage.getItem("user12-id"));
     const [token, setToken] = useState(localStorage.getItem("token12"));
+    const [api, setApi] = useState(new Api(token));
     const [baseData, setBaseData] = useState([]);
     const [goods, setGoods] = useState(baseData);
 
     const [searchResult, setSearchResult] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
-
     useEffect(() => {
         if (user) {
             setUserId(localStorage.getItem("user12-id"));
@@ -35,21 +36,21 @@ const App = () => {
     }, [user])
 
     useEffect(() => {
+        setApi(new Api(token));
         console.log("token", token);
+    }, [token])
+
+    useEffect(() => {
         if (token) {
-            fetch("https://api.react-learning.ru/products", {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            })
-                .then(res => res.json())
+            api.getProducts()
                 .then(data => {
                     console.log(data);
                     setBaseData(data.products);
                 })
+        } else {
+            setBaseData([]);
         }
-    }, [token])
-
+    }, [api])
     useEffect(() => {
     }, [baseData])
     return (
@@ -61,7 +62,8 @@ const App = () => {
             goods,
             setGoods,
             userId,
-            token
+            token,
+            api
         }}>
                 <Header
                     user={user}
@@ -70,6 +72,7 @@ const App = () => {
                     setGoods={setGoods}
                     setModalOpen={setModalOpen}
                 />
+            {/*</Ctx2.Provider>*/}
             <main>
                 <Routes>
                     <Route path="/" element={<Home user={user} setActive={setModalOpen}/>}/>

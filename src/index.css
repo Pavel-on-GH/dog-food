@@ -96,3 +96,14 @@ p {
   border-radius: 20px;
   border: 1px solid silver;
 }
+
+.button-in-product {
+  background-color: LightCyan;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.button-in-product-bascet {
+  color: red
+}
