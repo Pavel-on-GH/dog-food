@@ -65,7 +65,7 @@ const Product = () => {
 			})
 	}
 	return <Container style={{ gridTemplateColumns: "1fr" }}>
-		<Row className="g-3">
+		<Row className="g-3 banner-in-product">
 			<Link to={`/catalog#pro_${id}`}>Назад</Link>
 			{data.name
 				? <>
@@ -76,9 +76,9 @@ const Product = () => {
 						<h1>{data.name}</h1>
 					</Col>
 					<Col xs={12} md={6}>
-						<img src={data.pictures} alt={data.name} className="w-100" />
+						<img src={data.pictures} alt={data.name} className="w-100 img-in-product" />
 					</Col>
-					<Col xs={12} md={6} className={`${data.discount ? "text-danger" : "text-secondary"} fw-bold fs-1`}>
+					<Col xs={12} className={`${data.discount ? "text-danger" : "text-secondary"} fw-bold fs-1`}>
 						{Math.ceil(data.price * (100 - data.discount) / 100)} ₽
 					</Col>
 					<Col xs={12}>
@@ -139,7 +139,10 @@ const Product = () => {
 							</Col>}
 						</Row>
 					</Col>
-						: hideForm && <Col><Button variant="outline-info" onClick={() => setHideForm(false)}>Написать отзыв</Button></Col>
+						: hideForm && <Col><Button
+						variant="outline-info" 
+						onClick={() => setHideForm(false)}>Написать отзыв
+						</Button></Col>
 					}
 					{!hideForm && <Col xs={12} className="mt-5">
 						<h3>Новый отзыв</h3>
@@ -177,7 +180,10 @@ const Product = () => {
 									setHideForm(true);
 								}}
 							>Отмена</Button>
-							<Button type="submit">Добавить</Button>
+							<Button 
+							className="buttons-in-product" 
+							type="submit">Добавить
+							</Button>
 						</Form>
 					</Col>}
 				</>
