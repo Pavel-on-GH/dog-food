@@ -97,13 +97,9 @@ p {
   border: 1px solid silver;
 }
 
-.button-in-product {
+.button-in-profile {
   background-color: LightCyan;
   margin: 10px;
-  border-radius: 5px;
   border: 1px solid black;
-}
-
-.button-in-product-bascet {
-  color: red
+  border-radius: 5px;
 }
