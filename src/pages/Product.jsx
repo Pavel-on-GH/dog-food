@@ -78,7 +78,16 @@ const Product = () => {
 					<Col xs={12} md={6}>
 						<img src={data.pictures} alt={data.name} className="w-100 img-in-product" />
 					</Col>
-					<Col xs={12} className={`${data.discount ? "text-danger" : "text-secondary"} fw-bold fs-1`}>
+					<Col xs={12} md={3} className="card-in-product">
+						<div className="title-in-product-card">Доставка по всему Миру!</div>
+						<div>Доставка курьером - от {'2999 ₽;'}</div>
+						<div>Доставка в пункт выдачи - {"бесплатно!"}</div>
+					</Col>
+					<Col xs={12} md={3} className="card-in-product">
+						<div className="title-in-product-card">Гарантия качества:</div>
+						<div>Если Вам не понравилось качество нашей продукции, мы вернем деньги.</div>
+					</Col>
+					<Col xs={12} className={`${data.discount ? "text-danger" : "text-secondary"} fw-bold fs-1`}>{`Цена: `}
 						{Math.ceil(data.price * (100 - data.discount) / 100)} ₽
 					</Col>
 					<Col xs={12}>
@@ -140,8 +149,8 @@ const Product = () => {
 						</Row>
 					</Col>
 						: hideForm && <Col><Button
-						variant="outline-info" 
-						onClick={() => setHideForm(false)}>Написать отзыв
+							variant="outline-info"
+							onClick={() => setHideForm(false)}>Написать отзыв
 						</Button></Col>
 					}
 					{!hideForm && <Col xs={12} className="mt-5">
@@ -180,9 +189,9 @@ const Product = () => {
 									setHideForm(true);
 								}}
 							>Отмена</Button>
-							<Button 
-							className="buttons-in-product" 
-							type="submit">Добавить
+							<Button
+								className="buttons-in-product"
+								type="submit">Добавить
 							</Button>
 						</Form>
 					</Col>}

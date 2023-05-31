@@ -97,13 +97,6 @@ p {
   border: 1px solid silver;
 }
 
-.button-in-profile {
-  background-color: LightCyan;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
 .banner-in-product {
   background-color: bisque;
   padding: 10px;
@@ -124,4 +117,16 @@ p {
 .buttons-in-product {
   background-color: green;
   margin: 10px;
+}
+
+.card-in-product {
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid bisque;
+  max-height: 10%;
+  font-size: auto;
+}
+
+.title-in-product-card {
+font-weight: bold;
 }
