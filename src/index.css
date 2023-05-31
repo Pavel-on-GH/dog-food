@@ -90,7 +90,7 @@ p {
 }
 
 .promotion img {
-  max-width:100%;
+  max-width: 100%;
   height: auto;
   margin: auto;
   border-radius: 20px;
@@ -101,7 +101,7 @@ p {
   background-color: bisque;
   padding: 10px;
   border-radius: 20px;
-  border: 1px solid silver;  
+  border: 1px solid silver;
 }
 
 .img-in-product {
@@ -110,11 +110,22 @@ p {
 }
 
 .me-2 {
-    margin: 10px;
-    background-color: red;
+  margin: 10px;
+  background-color: red;
 }
 
 .buttons-in-product {
   background-color: green;
   margin: 10px;
+}
+
+.card-in-product {
+  background-color: bisque;
+  font-size: auto;
+}
+
+.title-in-product-card {
+  font-weight: bold;
+  margin-top: 10px;
+  color: red;
 }
