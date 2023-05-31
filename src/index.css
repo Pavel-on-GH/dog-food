@@ -118,15 +118,3 @@ p {
   background-color: green;
   margin: 10px;
 }
-
-.card-in-product {
-  background-color: white;
-  border-radius: 10px;
-  border: 2px solid bisque;
-  max-height: 10%;
-  font-size: auto;
-}
-
-.title-in-product-card {
-font-weight: bold;
-}
