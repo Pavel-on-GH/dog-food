@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import {
-    BalloonHeart,
+    Heart,
     Cart4,
     PersonCircle,
-    BuildingUp
+    BuildingUp,
+    Book
 } from "react-bootstrap-icons";
 import Ctx from "../../ctx"
 
@@ -30,19 +31,24 @@ const Header = ({
         </div>
         <nav className="header__menu">
             {user && <>
+
+                <Link to="/catalog">
+                    <Book title="Каталог" />
+                </Link>
+
                 <Link to="/favorites">
-                    <BalloonHeart title="Избранное" />
+                    <Heart title="Избранное" />
                 </Link>
                 
+                <Link to="/profile">
+                    <PersonCircle title="Личный кабинет" />
+                </Link>
+
                 <Link to="/basket" className="header__link">
                     <Cart4  title="Корзина"/>
                     {basket.length > 0 && <span className="header__badge">
                         {basket.reduce((acc, el) => acc + el.cnt, 0)}
                     </span>}
-                </Link>
-
-                <Link to="/profile">
-                    <PersonCircle title="Личный кабинет" />
                 </Link>
 
             </>}

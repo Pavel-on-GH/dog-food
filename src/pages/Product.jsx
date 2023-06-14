@@ -22,7 +22,7 @@ const tableInfo = [
 
 const Product = () => {
 	const { id } = useParams()
-	const { api, userId, setBaseData } = useContext(Ctx);
+	const { api, userId, setBaseData, basket, setBasket } = useContext(Ctx);
 	const [data, setData] = useState({});
 	const [revText, setRevText] = useState("");
 	const [revRating, setRevRating] = useState(0);
@@ -65,6 +65,24 @@ const Product = () => {
 				navigate("/catalog");
 			})
 	}
+
+	const [cnt, setCnt] = useState(0);
+	const inBasket = basket.filter(el => el.id === id).length > 0;
+	const addToBasket = !inBasket
+		? (e) => {
+			e.preventDefault()
+			e.stopPropagation()
+			cnt > 1 ? setCnt(0) : setCnt(1)
+			setBasket(prev => [...prev, {
+				id,
+				price: data.price,
+				discount: data.discount,
+				cnt: 1
+			}])
+		}
+		: (() => { });
+
+
 	return <Container style={{ gridTemplateColumns: "1fr" }}>
 		<Row className="g-3 banner-in-product">
 			<Link to={`/catalog#pro_${id}`}>Назад</Link>
@@ -85,8 +103,17 @@ const Product = () => {
 						<div>Доставка курьером - от {'2999 ₽;'}</div>
 						<div>Доставка в пункт выдачи - {"бесплатно!"}</div>
 						<div className="title-in-product-card">Гарантия качества:</div>
-						<div>Если Вам не понравилось качество нашей продукции, мы вернем деньги, 
+						<div>Если Вам не понравилось качество нашей продукции, мы вернем деньги,
 							либо сделаем все возможное, чтобы удовлетворить ваши нужды.</div>
+						<Button className="button-in-product-page"
+							onClick={addToBasket}
+							disabled={inBasket}
+						>
+							{!inBasket
+								? "Добавить в корзину"
+								: "В корзине"
+							}
+						</Button>
 					</Col>
 					<Col xs={12} className={`${data.discount ? "text-danger" : "text-secondary"} fw-bold fs-1`}>{`Цена: `}
 						{Math.ceil(data.price * (100 - data.discount) / 100)} ₽
@@ -204,6 +231,7 @@ const Product = () => {
 				</Col>
 			}
 		</Row>
+
 	</Container>
 }
 

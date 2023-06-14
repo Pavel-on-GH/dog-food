@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 const links = [
     { name: "Каталог", src: "/catalog" },
-    { name: "Избранное", src: "/" },
-    { name: "Корзина", src: "/" },
+    { name: "Избранное", src: "/favorites" },
+    { name: "Корзина", src: "/basket" },
 ];
 
 const Footer = () => <footer>
