@@ -1,9 +1,24 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { Basket2, Plus } from "react-bootstrap-icons"
+import { Basket2, Plus } from "react-bootstrap-icons";
 import { Container, Row, Col, Table, Card, Button, Form } from "react-bootstrap";
 
-import Ctx from "../ctx"
+import Ctx from "../ctx";
+
+const tableInfo = [
+	{
+		name: "wight",
+		text: "Вес"
+	},
+	{
+		name: "author",
+		text: "Продавец"
+	},
+	{
+		name: "description",
+		text: "Описание товара"
+	}
+];
 
 const Product = () => {
 	const { id } = useParams()
@@ -13,20 +28,6 @@ const Product = () => {
 	const [revRating, setRevRating] = useState(0);
 	const [hideForm, setHideForm] = useState(true);
 	const navigate = useNavigate();
-	const tableInfo = [
-		{
-			name: "wight",
-			text: "Вес"
-		},
-		{
-			name: "author",
-			text: "Продавец"
-		},
-		{
-			name: "description",
-			text: "Описание товара"
-		}
-	]
 
 	const addReview = (e) => {
 		e.preventDefault();
