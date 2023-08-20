@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import {useState, useEffect, createContext} from "react";
 import { Routes, Route } from "react-router-dom";
 import Ctx from "./ctx"
 import Api from "./Api"

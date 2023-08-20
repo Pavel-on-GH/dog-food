@@ -1,11 +1,7 @@
 import {useContext} from "react";
 import {Link} from "react-router-dom";
 import Card from "../components/Card/Card";
-import Promo from "../components/Promo/Promo";
 import Ctx from "../ctx";
-
-// Заметка: мб, позже удалить этот компонент - он уже не нужен
-const promoData = ["=)", "^_^", "O_o", "x_x", "=(", ";(", "0l0"];
 
 const OldPage = ({goods}) => {
     const {searchResult} = useContext(Ctx)
@@ -20,7 +16,6 @@ const OldPage = ({goods}) => {
         {searchResult && <p className="search-result">{searchResult}</p>}            {goods.map((pro, i) => (
                 <Card key={i} img={pro.pictures} name={pro.name} price={pro.price} />
             ))}
-            {promoData.map(el => <Promo key={el} text={el}/>)}
         </div>
 	</>
 }

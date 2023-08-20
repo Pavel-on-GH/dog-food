@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination";
 
 const Catalog = ({goods, userId}) => {
 	const {searchResult} = useContext(Ctx);
-	const paginate = usePagination(goods, 9)
+	const paginate = usePagination(goods, 12)
 	useEffect(() => {
 		paginate.step(1);
 	}, [searchResult])
